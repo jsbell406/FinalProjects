@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Students";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+
+    <h2 class="lead">Create or Edit Students</h2>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h4>Students</h4>
+        <ul id="Students"></ul>
+    </div>
+    <div class="col-md-4">
+        <form name="formEditStudent" id="formEditStudent">
+            <label>First Name: <input type="text" id="FirstName" /></label><br />
+            <label>Last Name: <input type="text" id="LastName" /></label><br />
+            <label>Discipline: <input type="text" id="editDiscipline" disabled /></label><br />
+            <input type="submit" id="editStudent" value="Update Student" /><br />
+            <input type="hidden" id="StudentId" />
+        </form>
+    </div>
+    <div class="col-md-4">
+        <form name="formAddStudent" id="formAddStudent">
+            <label>First Name: <input type="text" id="FirstNameAdd" /></label><br />
+            <label>Last Name: <input type="text" id="LastNameAdd" /></label><br />
+            <label>Discipline: <select id="disciplineForAdd"></select></label><br />
+            <label id="focus" hidden>Focus: <select id="focusForAdd" ></select></label>
+            <input type="submit" id="addStudent" value="Add new Student" /><br />
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/StudentForm.js"></script>
+
+

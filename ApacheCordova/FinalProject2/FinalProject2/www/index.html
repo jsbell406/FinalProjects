@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<!--
+     Name . . . : James Bell
+     Class. . . : CSCI 238 Standards based Mobile Applications
+     Instructor : Mounika Pokuri
+     Date . . . : 3/25/2019
+     File . . . : index.html
+     Assignment : Task 2
+     Notes. . . : Required elements
+                   1. A narrative description of the application that outlines the purpose, intended use and audience.
+                   2. Use a Web SQL database in some way.  Collect and display data from the database.
+                   3. Validate at least some of the data entered by the user.
+                   4. Use at least two of the following: capture image or other media, use geolocation, display google or other map.
+                   5. Comment your code.
+-->
+
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
+
+    <title>Final Project</title>
+
+</head>
+<body>
+
+    <!--------- Home View --------->
+    <div data-role="page" id="homePage">
+
+
+        <!--------- Header --------->
+        <div data-role="header">
+
+
+        </div>
+
+
+        <!--------- Body   --------->
+        <div role="main">
+            <button id="btnAddNewRecipe" class="ui-btn ui-shadow">Add Recipe</button>
+
+            <ul id="lstShowRecipes" data-role="listview" data-autodividers="true" data-filter="true" data-inset="true"></ul>
+
+        </div>
+
+
+        <!--------- Footer --------->
+        <div data-role="footer">
+
+
+        </div>
+    </div>
+    <!--------- Recipe Name View --------->
+    <div data-role="page" id="addEditRecipeName">
+
+
+        <!--------- Header --------->
+        <div data-role="header">
+            <h1 style="text-align:center; font-size:large; margin:0 0 0 0;">Recipe Name</h1>
+
+
+        </div>
+
+
+        <!--------- Body   --------->
+        <div role="main">
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><button id="btnRecipeIncredientPage" class="ui-shadow ui-btn ui-corner-all">Ingredients</button></div>
+                <div class="ui-block-b"><button id="btnRecipeStepPage" class="ui-shadow ui-btn ui-corner-all">Steps</button></div>
+            </div>
+            <br />
+
+            <input type="text" id="recipeName" name="recipeName" placeholder="Enter Recipe Name" value="">
+            <div id="recipeNameError">
+                <p>Recipe name required to continue</p>
+            </div>
+
+            <button id="btnTakePicture" class="ui-btn">Take Picture</button>
+
+            <img id="recipeImage" style="height: 300px; width: 300px;" />
+
+            <input id="editRecipeId" type="hidden" />
+        </div>
+
+
+        <!--------- Footer --------->
+        <div data-role="footer">
+
+
+        </div>
+    </div>
+    <!--------- Add/Edit Steps View --------->
+    <div data-role="page" id="addEditStepsPage">
+
+
+        <!--------- Header --------->
+        <div data-role="header">
+            <h1 style="text-align:center; font-size:large; margin:0 0 0 0;">Add and edit Steps</h1>
+
+
+
+            <div data-role="navbar">
+                <ul>
+
+                    <li><a id="testBtn" href="#addEditIngredientPage">Ingredients</a></li>
+                    <li><a href="#addEditStepsPage" class="ui-btn-active ui-state-persist">Steps</a></li>
+
+                </ul>
+            </div><!-- /navbar -->
+        </div>
+
+
+        <!--------- Body   --------->
+        <div role="main">
+            <br />
+
+
+            <label style="text-align:center; font-size:large;" for="stepPosition">Step</label>
+            <input type="number" id="stepPosition" name="stepPosition" pattern="[0-9]*" value="1">
+
+            <label style="text-align:center; font-size:large;" for="stepDescription">Description</label>
+            <textarea cols="40" rows="8" id="stepDescription" name="stepDescription" placeholder="Enter Instruction"></textarea>
+
+            <input id="editStepId" type="hidden" />
+            <input id="editStepPosition" type="hidden" />
+            <input id="editRecipeIdStepsPage" type="hidden" />
+
+
+            <button id="btnSaveStep" class="ui-btn ui-shadow ui-corner-all ui-mini">Save Step</button>
+            <button id="saveRecipeStepsPage" class="ui-btn ui-shadow ui-corner-all ui-mini">Done</button>
+
+            <ol id="displaySteps" data-role="listview"></ol>
+
+        </div>
+
+
+        <!--------- Footer --------->
+        <div data-role="footer">
+
+
+        </div>
+    </div>
+    <!--------- Add/Edit Ingredient View --------->
+    <div data-role="page" id="addEditIngredientPage">
+
+
+        <!--------- Header --------->
+        <div data-role="header">
+            <h1 style="text-align:center; font-size:large; margin:0 0 0 0;">Add and Edit Ingredients</h1>
+
+        </div>
+
+
+        <!--------- Body   --------->
+        <div role="main">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#addEditIngredientPage" class="ui-btn-active ui-state-persist">Ingredients</a></li>
+                    <li><a href="#addEditStepsPage">Steps</a></li>
+                </ul>
+            </div><!-- /navbar -->
+
+
+            <div class="ui-field-contain">
+                <label style="text-align:center; font-size:large;" for="stepPosition">Amount</label>
+                <input type="text" id="amount" name="amount" value="">
+            </div>
+            <div class="ui-field-contain">
+                <label style="text-align:center; font-size:large;" for="unitOfMeasurement">Unit</label>
+                <select id="unitOfMeasurement" name="unitOfMeasurement" data-mini="true"></select>
+            </div>
+
+            <div class="ui-field-contain">
+                <label style="text-align:center; font-size:large;" for="stepPosition">Name</label>
+                <input type="text" id="ingredientName" name="ingredientName" value="">
+            </div>
+            <input id="editIngredientId" type="hidden" />
+
+
+            <button id="btnSaveIngredient" class="ui-btn ui-shadow ui-corner-all ui-mini">Save Ingredient</button>
+         
+
+            <button id="saveRecipeIngredientPage" class="ui-btn ui-shadow ui-corner-all ui-mini">Done</button>
+
+           
+
+            <ul id="displayIngredients" data-role="listview"></ul>
+
+        </div>
+
+
+        <!--------- Footer --------->
+        <div data-role="footer">
+
+
+        </div>
+    </div>
+    <!--------- Recipe Overview --------->
+    <div data-role="page" id="recipeOverviewPage">
+
+
+        <!--------- Header --------->
+        <div data-role="header">
+
+
+        </div>
+
+
+        <!--------- Body   --------->
+        <div role="main">
+            <fieldset class="ui-grid-a">
+                <div class="ui-block-a"><input type="button" value="Edit" data-theme="a"></div>
+                <div class="ui-block-b"><input type="button" value="Step-by-Step" data-theme="a"></div>
+            </fieldset>
+
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <legend>Radio buttons, mini, horizontal controlgroup:</legend>
+                <input class="ui-btn ui-shadow" type="radio" name="radio-choice-b" id="radio-choice-c" value="Double" checked="checked">
+                <label for="radio-choice-c">Double</label>
+                <input type="radio" name="radio-choice-b" id="radio-choice-d" value="Full">
+                <label for="radio-choice-d">Full</label>
+                <input type="radio" name="radio-choice-b" id="radio-choice-e" value="Half">
+                <label for="radio-choice-e">Half</label>
+            </fieldset>
+
+            <h3 style="text-align:center; font-style:italic;">Overview</h3>
+
+            <div id="overviewContainer">
+                <div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--------- Footer --------->
+        <div data-role="footer">
+
+
+        </div>
+    </div>
+
+   
+</body>
+</html>

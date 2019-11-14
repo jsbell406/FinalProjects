@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Employers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+
+    <h2 class="lead">Create or Edit Employer</h2>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h4>Employers</h4>
+        <ul id="Employers"></ul>
+    </div>
+    <div class="col-md-4">
+        <form name="formEditEmployer" id="formEditEmployer">
+            <label>Organization Name: <input type="text" id="OrgName" autofocus /></label><br />
+            <label>Contact First Name: <input type="text" id="ConFirstName" /></label><br />
+            <label>Contact Last Name: <input type="text" id="ConLastName" /></label><br />
+            <label>Contact Phone: <input type="text" id="ConPhone" /></label><br />
+            <label>Contact Email: <input type="email" id="ConEmail" /></label><br />
+            <input type="submit" id="editEmployer" value="Edit Employer" /><br />
+            <input type="hidden" id="EmployerId" />
+        </form>
+    </div>
+    <div class="col-md-4">
+        <form name="formAddEmployer" id="formAddEmployer">
+            <label>Organization Name: <input type="text" id="OrgNameAdd" /></label><br />
+            <label>Contact First Name: <input type="text" id="ConFirstNameAdd" /></label><br />
+            <label>Contact Last Name: <input type="text" id="ConLastNameAdd" /></label><br />
+            <label>Contact Phone: <input type="text" id="ConPhoneAdd" /></label><br />
+            <label>Contact Email: <input type="email" id="ConEmailAdd" /></label><br />
+            <input type="submit" id="addEmployer" value="Add Employer" /><br />
+            <input type="hidden" id="EmployerIdAdd" />
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/EmployerForm.js"></script>
+

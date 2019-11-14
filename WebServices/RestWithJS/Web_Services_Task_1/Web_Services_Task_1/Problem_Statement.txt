@@ -1,0 +1,78 @@
+﻿Name: 
+	James Bell
+
+Problem:
+	No dedicated avenue for students and employers to communicate with eachother on potential projects.
+	
+Consequences:
+	Students are unable to find interships.
+	Lack of networking with local employers lowers confidence in the institution.
+
+Solution:
+	Design an online portal allowing employers and students the ability to present projects and abilities to eachother.
+	
+Design:
+	
+	Employers:
+		Employers will have the ability to store their company name and a contact person.
+		Create and store projects that can be completed by students.
+		Search for students that could potetially fill the requirements of selected project.
+
+	Students:
+		Students will be able to store personal contact information and field of study.
+		Look up a list of projects that need someone with student's field of study.
+		Select a potential project to bring up company contact info associated with selected project.
+
+	Projects:
+		Projects are created by employers. 
+		Projects will store the number of students with a desired field of study needed to complete the project.
+		
+	Disciplines:
+		Referenced as "field of study" above, disciplines will store generic field's of study, and specialties, or focuses. 
+			Examples:
+				A student's field of study is Computer Science with a focus in computer programming.
+				A student's field of study is Computer Science with a focus in computer networking.
+			Storing field of study alongside several focuses will allow for a robust pattern matching system.
+		
+
+
+Task 1 Functionality:
+
+	Resources:
+		Employer:
+			HTML Methods:
+				Get
+				Post
+				Put
+				Delete
+
+		Student:
+			HTML Methods:
+				Get
+				Post
+				Put
+				Delete
+
+		Project:
+			HTML Methods:
+				Get
+				Post
+				Put
+				Delete
+
+		Discipline:
+			HTML Methods:
+				Get
+				Post
+				Put
+				Delete
+
+	JavaScript and HTML Client:
+		Form to add new employer or edit an employer.
+		Form to add new projects or edit a project.
+
+
+
+			
+		
+		
